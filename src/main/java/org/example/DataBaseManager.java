@@ -36,29 +36,29 @@ public class DataBaseManager {
 
     public static void updateDatabase(String accountNumber, double balance) throws SQLException {
         try (Connection conn = DriverManager.getConnection(DATABASE_URL)) {
-            // Проверяем, существует ли счет в базе данных
+            // Checking if the account exists in the database
             String checkAccountQuery = "SELECT balance FROM accounts WHERE account_number = ?";
             try (PreparedStatement checkStmt = conn.prepareStatement(checkAccountQuery)) {
                 checkStmt.setString(1, accountNumber);
                 ResultSet rs = checkStmt.executeQuery();
 
                 if (rs.next()) {
-                    // Счет существует, обновляем баланс
+                    // The account exists, update the balance
                     String updateQuery = "UPDATE accounts SET balance = ? WHERE account_number = ?";
                     try (PreparedStatement updateStmt = conn.prepareStatement(updateQuery)) {
                         updateStmt.setDouble(1, balance);
                         updateStmt.setString(2, accountNumber);
                         updateStmt.executeUpdate();
-                        System.out.println("Обновлен счёт: " + accountNumber + " с балансом: " + balance);
+                        System.out.println("Account updated: " + accountNumber + " with balance: " + balance);
                     }
                 } else {
-                    // Счет не существует, добавляем новый счет
+                    // Account does not exist, add a new account
                     String insertQuery = "INSERT INTO accounts (account_number, balance) VALUES (?, ?)";
                     try (PreparedStatement insertStmt = conn.prepareStatement(insertQuery)) {
                         insertStmt.setString(1, accountNumber);
                         insertStmt.setDouble(2, balance);
                         insertStmt.executeUpdate();
-                        System.out.println("Добавлен новый счёт: " + accountNumber + " с балансом: " + balance);
+                        System.out.println("New account added: " + accountNumber + " with balance: " + balance);
                     }
                 }
             }

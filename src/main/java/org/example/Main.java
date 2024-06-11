@@ -1,4 +1,5 @@
 package org.example;
+
 import java.util.Scanner;
 
 public class Main {
@@ -15,11 +16,10 @@ public class Main {
             System.out.println("3. Exit");
             System.out.print("Enter your choice: ");
             int choice = scanner.nextInt();
-            scanner.nextLine(); // consume newline
-
+            scanner.nextLine();
             switch (choice) {
                 case 1:
-                    parser.parseFileAndInsertIntoDatabase("input/*.txt");
+                    parser.processFiles();
                     break;
                 case 2:
                     transferService.transferMoney();

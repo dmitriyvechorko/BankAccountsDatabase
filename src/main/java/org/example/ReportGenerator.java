@@ -16,6 +16,7 @@ public class ReportGenerator {
         this.dateTime = dateTime;
         this.sourceAccount = sourceAccount;
         this.destinationAccount = destinationAccount;
+        this.amount = amount;
         this.status = status;
     }
 
@@ -45,8 +46,7 @@ public class ReportGenerator {
 
     public void generateReport() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter("output/report.txt", true))) {
-            String line = getDateTime() + " | " + getSourceAccount() + " | " +
-                    getDestinationAccount() + " | " + getAmount() + " | " + getStatus() + "\n";
+            String line = STR."\{getDateTime()} | \{getSourceAccount()} | \{getDestinationAccount()} | \{getAmount()} | \{getStatus()}\n";
             writer.write(line);
 
         } catch (IOException e) {
