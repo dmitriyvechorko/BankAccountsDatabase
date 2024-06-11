@@ -1,4 +1,4 @@
-package org.example;
+package org.example.fileProcessing;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;

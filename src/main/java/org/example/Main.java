@@ -1,10 +1,14 @@
 package org.example;
 
+import org.example.databaseInteractions.DatabaseManager;
+import org.example.databaseInteractions.TransferService;
+import org.example.fileProcessing.FileParser;
+
 import java.util.Scanner;
 
-public class Main {
+public class Main{
     public static void main(String[] args) {
-        DataBaseManager.createNewDatabase();
+        DatabaseManager.createNewDatabase();
 
         Scanner scanner = new Scanner(System.in);
         FileParser parser = new FileParser();

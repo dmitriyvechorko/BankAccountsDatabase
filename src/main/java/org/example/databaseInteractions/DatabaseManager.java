@@ -1,8 +1,8 @@
-package org.example;
+package org.example.databaseInteractions;
 
 import java.sql.*;
 
-public class DataBaseManager {
+public class DatabaseManager {
     private static final String DATABASE_URL = "jdbc:sqlite:data";
 
     public static Connection connect() {
@@ -16,6 +16,28 @@ public class DataBaseManager {
             System.out.println(e.getMessage());
         }
         return conn;
+    }
+
+    public static boolean isColumnExists(Connection connection, String tableName, String columnName) throws SQLException {
+        DatabaseMetaData metaData = connection.getMetaData();
+        try (ResultSet columns = metaData.getColumns(null, null, tableName, columnName)) {
+            return columns.next();
+        }
+    }
+
+    public static boolean isValueExists(Connection connection, String tableName, String columnName, Object value) throws SQLException {
+        if (!isColumnExists(connection, tableName, columnName)) {
+            System.out.println("Column " + columnName + " does not exist in table " + tableName);
+            return false;
+        }
+
+        String query = String.format("SELECT 1 FROM %s WHERE %s = ?", tableName, columnName);
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setObject(1, value);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                return rs.next();
+            }
+        }
     }
 
     public static void createNewDatabase() {

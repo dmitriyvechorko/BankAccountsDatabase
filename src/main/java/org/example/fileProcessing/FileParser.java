@@ -1,4 +1,6 @@
-package org.example;
+package org.example.fileProcessing;
+
+import org.example.databaseInteractions.DatabaseManager;
 
 import java.io.*;
 import java.sql.*;
@@ -9,13 +11,12 @@ public class FileParser {
         File[] files = inputDirectory.listFiles((dir, name) -> name.toLowerCase().endsWith(".txt"));
 
         if (files == null || files.length == 0) {
-            System.out.println("No .txt files found in directory");
+            System.out.println("No .txt files found in the directory");
             return;
         }
         for (File file : files) {
             parseFileAndInsertIntoDatabase(file);
         }
-
     }
 
     public void parseFileAndInsertIntoDatabase(File file) {
@@ -42,7 +43,7 @@ public class FileParser {
                 }
 
                 // Data processing and database updating
-                DataBaseManager.updateDatabase(accountNumber, balance);
+                DatabaseManager.updateDatabase(accountNumber, balance);
             }
         } catch (IOException | SQLException e) {
             e.printStackTrace();

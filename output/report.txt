@@ -1,5 +1,0 @@
-2024-06-11 22:43:40 | 1 | 1 | 1.0 | Transaction has been failed
-2024-06-11 22:45:03 | 56819-64821 | 12654-72543 | 2451.0 | Transaction has been completed successfully
-2024-06-11 22:45:49 | 56819-64821 | 12345-67890 | 2184.0 | Transaction has been completed successfully
-2024-06-11 22:46:24 | 13425-67890 | 12654-72543 | 1234.0 | Transaction has been failed
-2024-06-11 22:47:00 | 12654-72543 | 13425-67890 | 372.0 | Transaction has been completed successfully
