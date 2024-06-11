@@ -20,7 +20,7 @@ public class TransferService {
             String destinationAccount = scanner.nextLine();
             System.out.print("Enter amount to transfer: ");
             double amount = scanner.nextDouble();
-            if (!isValueExists(conn, "accounts", "account_number", amount)) {
+            if (isValueExists(conn, "accounts", "account_number", amount)) {
                 System.out.println("No such account!");
                 transferMoney();
             }
