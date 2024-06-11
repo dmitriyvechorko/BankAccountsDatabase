@@ -108,4 +108,5 @@ another. Here's how this method works:
    translation report. This report includes information about the date and time of the transaction,
    account numbers, transfer amount and transaction status.
 
-## ![*classes UML-diagram*](https://github.com/dmitriyvechorko/Test/blob/main/diag1.png)
+## *Classes UML-diagram*
+![*classes UML-diagram*](https://github.com/dmitriyvechorko/Test/blob/main/diag1.png)
