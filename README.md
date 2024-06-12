@@ -109,4 +109,4 @@ another. Here's how this method works:
    account numbers, transfer amount and transaction status.
 
 ## *Classes UML-diagram*
-![*classes UML-diagram*](https://github.com/dmitriyvechorko/Test/blob/main/diag1.png)
+![*classes UML-diagram*](https://github.com/dmitriyvechorko/BankAccountsDatabase/blob/main/images/diag1.png)
