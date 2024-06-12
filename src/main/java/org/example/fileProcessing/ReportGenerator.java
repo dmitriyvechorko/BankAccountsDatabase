@@ -53,6 +53,15 @@ public class ReportGenerator {
             e.printStackTrace();
         }
     }
+    public static void generateReport(String messageLine) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("output/report.txt", true))) {
+            String line = STR."\{messageLine}\n";
+            writer.write(line);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 

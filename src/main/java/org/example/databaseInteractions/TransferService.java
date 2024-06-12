@@ -16,14 +16,22 @@ public class TransferService {
             Scanner scanner = new Scanner(System.in);
             System.out.print("Enter source account number: ");
             String sourceAccount = scanner.nextLine();
-            System.out.print("Enter destination account number: ");
-            String destinationAccount = scanner.nextLine();
-            System.out.print("Enter amount to transfer: ");
-            double amount = scanner.nextDouble();
-            if (isValueExists(conn, "accounts", "account_number", amount)) {
-                System.out.println("No such account!");
+            if (!isValueExists(conn, "accounts", "account_number", sourceAccount)) {
+                String messageLine = "No such account!";
+                System.out.println(messageLine);
+                ReportGenerator.generateReport(messageLine);
                 transferMoney();
             }
+            System.out.print("Enter destination account number: ");
+            String destinationAccount = scanner.nextLine();
+            if (!isValueExists(conn, "accounts", "account_number", destinationAccount)) {
+                String messageLine = "No such account!";
+                System.out.println(messageLine);
+                ReportGenerator.generateReport(messageLine);
+                transferMoney();
+            }
+            System.out.print("Enter amount to transfer: ");
+            double amount = scanner.nextDouble();
             boolean isCompleted = false;
             conn.setAutoCommit(false);
             // Check if source account has enough balance
